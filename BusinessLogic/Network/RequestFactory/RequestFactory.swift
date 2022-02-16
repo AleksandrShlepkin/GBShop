@@ -33,4 +33,9 @@ class RequestFactory {
         let errorParser = makeErrorParser()
         return LogOut(errorParser: errorParser, sessionManager: commonSession, queue: sessionQueue)
     }
+    
+    func makeRegisterUserRequestFactory() -> RegisterUserRequestFactory {
+        let errorParser = makeErrorParser()
+        return RegisterUser(errorParser: errorParser, sessionManager: commonSession, queue: sessionQueue)
+    }
 }

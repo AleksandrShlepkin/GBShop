@@ -9,5 +9,6 @@ import Foundation
 import Alamofire
 
 protocol LogOutRequestFactory {
-    func logOut(result: String, complitionHandler: @escaping (AFDataResponse<LogOutModel>) -> Void)
+    func logOut(result: String,
+                complitionHandler: @escaping (AFDataResponse<LogOutModel>) -> Void)
 }

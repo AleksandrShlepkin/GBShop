@@ -9,11 +9,10 @@ import UIKit
 
 class ViewController: UIViewController {
     
-let requestFactory = RequestFactory()
+    let requestFactory = RequestFactory()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        logOut()
         
     }
     
@@ -39,10 +38,20 @@ let requestFactory = RequestFactory()
                 print(error)
             }
         }
-        
-        
     }
-
-
+    
+    func registerUser() {
+        let register = requestFactory.makeRegisterUserRequestFactory()
+        register.registerUser(result: "1", userMessege: "userMasseg") { response  in
+            switch response.result {
+            case .success(let result):
+                print( result)
+            case .failure(let error):
+                print( error)
+            }
+        }
+    }
+    
+    
 }
 
