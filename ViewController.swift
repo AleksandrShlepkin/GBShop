@@ -13,6 +13,7 @@ let requestFactory = RequestFactory()
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        logOut()
         
     }
     
@@ -28,7 +29,19 @@ let requestFactory = RequestFactory()
         }
     }
     
-    
+    func logOut() {
+        let logOut = requestFactory.makeLogOutRequestFactory()
+        logOut.logOut(result: "1") { response  in
+            switch response.result {
+            case .success(let logOut):
+                print(logOut)
+            case .failure(let error):
+                print(error)
+            }
+        }
+        
+        
+    }
 
 
 }

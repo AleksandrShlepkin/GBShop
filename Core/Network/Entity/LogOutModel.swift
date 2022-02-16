@@ -7,6 +7,6 @@
 
 import Foundation
 
-struct LogOut: Codable {
+struct LogOutModel: Codable {
     let result: Int
 }
