@@ -25,8 +25,10 @@ class LogOut: AbstractRequestFactory {
 }
 
 extension LogOut: LogOutRequestFactory {
-    func logOut(result: String, complitionHandler: @escaping (AFDataResponse<LogOutModel>) -> Void) {
-        let requestModel = LogOut(baseUrl: baseUrl, result: result)
+    func logOut(result: String,
+                complitionHandler: @escaping (AFDataResponse<LogOutModel>) -> Void) {
+        let requestModel = LogOut(baseUrl: baseUrl,
+                                  result: result)
         self.request(request: requestModel, completionHandler: complitionHandler)
     }
     

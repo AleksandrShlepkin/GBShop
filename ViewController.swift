@@ -13,12 +13,13 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        changeUser()
     }
     
     func auth() {
         let auth = requestFactory.makeAuthRequestFatory()
-        auth.login(userName: "Somebody", password: "Mypassword") { response  in
+        auth.login(userName: "Somebody",
+                   password: "Mypassword") { response  in
             switch response.result {
             case .success(let login):
                 print(login)
@@ -42,12 +43,32 @@ class ViewController: UIViewController {
     
     func registerUser() {
         let register = requestFactory.makeRegisterUserRequestFactory()
-        register.registerUser(result: "1", userMessege: "userMasseg") { response  in
+        register.registerUser(result: "1",
+                              userMessege: "userMasseg") { response  in
             switch response.result {
             case .success(let result):
                 print( result)
             case .failure(let error):
                 print( error)
+            }
+        }
+    }
+    
+    func changeUser() {
+        let change = requestFactory.makeChangeUserrequestFactory()
+        change.chengeUser(userId: 123,
+                          userName: "username",
+                          password: "password",
+                          email: "email",
+                          gender: "gender",
+                          creditCard: "creditCard",
+                          bio: "bio"
+        ) { response  in
+            switch response.result {
+            case .success(let result):
+                print(result)
+            case .failure(let error):
+                print(error)
             }
         }
     }

@@ -27,8 +27,12 @@ class RegisterUser: AbstractRequestFactory {
 }
 
 extension RegisterUser: RegisterUserRequestFactory {
-    func registerUser(result: String, userMessege: String, complitionHandler: @escaping (AFDataResponse<RegisterUserModel>) -> Void) {
-        let requestModel = RegisterUser(baseUrl: baseURL, result: result, userMessage: userMessege)
+    func registerUser(result: String,
+                      userMessege: String,
+                      complitionHandler: @escaping (AFDataResponse<RegisterUserModel>) -> Void) {
+        let requestModel = RegisterUser(baseUrl: baseURL,
+                                        result: result,
+                                        userMessage: userMessege)
         self.request(request: requestModel, completionHandler: complitionHandler)
     }
     
