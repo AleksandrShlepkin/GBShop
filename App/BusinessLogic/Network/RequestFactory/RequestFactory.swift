@@ -48,5 +48,10 @@ class RequestFactory {
         let errorParser = makeErrorParser()
         return Catalog(errorParse: errorParser, sessionManager: commonSession, queue: sessionQueue)
     }
+    
+    func makeGetGoodByld() -> getGoodByldRequestFactory {
+        let errorParser = makeErrorParser()
+        return GoodByld(errorParser: errorParser, sessionManager: commonSession, queue: sessionQueue)
+    }
    
 }

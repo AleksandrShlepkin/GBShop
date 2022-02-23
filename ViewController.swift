@@ -23,7 +23,19 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        auth()
+        getGoodByld()
+    }
+    
+    func getGoodByld() {
+        let getGoodByld = requestFactory.makeGetGoodByld()
+        getGoodByld.getGoodByld(productId: 123) { (response) in
+            switch response.result {
+            case .success(let result):
+                print(result)
+            case .failure(let error):
+                print(error)
+            }
+        }
     }
     
     func getCatalog() {
