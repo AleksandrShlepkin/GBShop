@@ -13,8 +13,22 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        changeUser()
+        getCatalog()
     }
+    
+    func getCatalog() {
+        let catalog = requestFactory.makeCatalog()
+        catalog.getCatalog(pageNumber: 1, idCategory: 1) { (response) in
+            switch response.result {
+            case .success(let result):
+                print(result)
+            case .failure(let error):
+                print(error)
+            }
+        }
+     
+    }
+
     
     func auth() {
         let auth = requestFactory.makeAuthRequestFatory()
@@ -44,7 +58,7 @@ class ViewController: UIViewController {
     func registerUser() {
         let register = requestFactory.makeRegisterUserRequestFactory()
         register.registerUser(result: "1",
-                              userMessege: "userMasseg") { response  in
+                              userMessege: "userMessage") { response  in
             switch response.result {
             case .success(let result):
                 print( result)

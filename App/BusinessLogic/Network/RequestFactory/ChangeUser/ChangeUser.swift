@@ -50,7 +50,7 @@ extension ChangeUser: ChangeUserRequestFactory {
 
 
 extension ChangeUser {
-    struct ChangeUser: RequestRouter{
+    struct ChangeUser: RequestRouter {
         var baseUrl: URL
         var method: HTTPMethod = .get
         var path: String = "changeUserData.json"
