@@ -9,12 +9,6 @@ import Foundation
 import Alamofire
 
 protocol ChangeUserRequestFactory {
-    func chengeUser(userId: Int,
-                    userName: String,
-                    password: String,
-                    email: String,
-                    gender: String,
-                    creditCard: String,
-                    bio: String,
+    func chengeUser(user: User,
                     complitionHandler: @escaping (AFDataResponse<ChangeUserModel>) -> Void)
 }

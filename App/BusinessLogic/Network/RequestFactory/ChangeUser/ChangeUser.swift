@@ -25,24 +25,11 @@ class ChangeUser: AbstractRequestFactory {
 }
 
 extension ChangeUser: ChangeUserRequestFactory {
-    func chengeUser(userId: Int,
-                    userName: String,
-                    password: String,
-                    email: String,
-                    gender: String,
-                    creditCard: String,
-                    bio: String,
-                    complitionHandler: @escaping (AFDataResponse<ChangeUserModel>) -> Void) {
-        let requestModel = ChangeUser(baseUrl: baseURL,
-                                      userId: userId,
-                                      userName: userName,
-                                      password: password,
-                                      email: email,
-                                      gender: gender,
-                                      creditCard: creditCard,
-                                      bio: bio)
+    func chengeUser(user: User, complitionHandler: @escaping (AFDataResponse<ChangeUserModel>) -> Void) {
+        let requestModel = ChangeUser(baseUrl: baseURL, user: user)
         self.request(request: requestModel, completionHandler: complitionHandler)
     }
+    
     
     
     
@@ -55,23 +42,17 @@ extension ChangeUser {
         var method: HTTPMethod = .get
         var path: String = "changeUserData.json"
         
-        let userId: Int
-        let userName: String
-        let password: String
-        let email: String
-        let gender: String
-        let creditCard: String
-        let bio: String
+        let user: User
         
-        var parameters: Parameters? {
+                var parameters: Parameters? {
             return [
-                "id_user": userId,
-                "username": userName,
-                "password": password,
-                "email": email,
-                "gender": gender,
-                "credit_card": creditCard,
-                "bio": bio
+                "name": user.name,
+                "user_id": user.id,
+                "username": user.login,
+                "email": user.email,
+                "gender": user.gender,
+                "credit_card": user.creditCard,
+                "bio": user.bio
             ]
         }
     }

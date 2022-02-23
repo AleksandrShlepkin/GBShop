@@ -10,10 +10,20 @@ import UIKit
 class ViewController: UIViewController {
     
     let requestFactory = RequestFactory()
+    let user = User(id: 123,
+                login: "alex@gb.com",
+                password: "124414",
+                name: "Alex",
+                lastname: "Short",
+                gender: "male",
+                creditCard: "1314-4533-4554-1123",
+                bio: "I'm student GB",
+                email: "alex@gb.com")
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        getCatalog()
+        auth()
     }
     
     func getCatalog() {
@@ -26,17 +36,16 @@ class ViewController: UIViewController {
                 print(error)
             }
         }
-     
+        
     }
-
+    
     
     func auth() {
         let auth = requestFactory.makeAuthRequestFatory()
-        auth.login(userName: "Somebody",
-                   password: "Mypassword") { response  in
+        auth.login(user: user) { response  in
             switch response.result {
-            case .success(let login):
-                print(login)
+            case .success(let result):
+                print(result)
             case .failure(let error):
                 print(error)
             }
@@ -70,14 +79,17 @@ class ViewController: UIViewController {
     
     func changeUser() {
         let change = requestFactory.makeChangeUserrequestFactory()
-        change.chengeUser(userId: 123,
-                          userName: "username",
-                          password: "password",
-                          email: "email",
-                          gender: "gender",
-                          creditCard: "creditCard",
-                          bio: "bio"
-        ) { response  in
+        let user = User(id: 123,
+                        login: "alex@gb.com",
+                        password: "124135",
+                        name: "Alex",
+                        lastname: "Short",
+                        gender: "male",
+                        creditCard: "3432-4567-2345-9888",
+                        bio: "I student GB",
+                        email: "alex@gb.com")
+        
+        change.chengeUser(user: user) { (response) in
             switch response.result {
             case .success(let result):
                 print(result)

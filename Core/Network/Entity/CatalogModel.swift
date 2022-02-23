@@ -7,19 +7,9 @@
 
 import Foundation
 
-//struct CatalogModel: Codable {
-//    let pageNumber: Int
-//    let idCategory: Int
-//    let products: [Products]
-//    
-//    enum CodingKeys: String, CodingKey {
-//        case pageNumber = "page_number"
-//        case idCategory = "id_category"
-//        case products = "products"
-//    }
-//}
 
-struct Products: Codable {
+
+struct CatalogModel: Codable {
     let idProduct: Int
     let productName: String
     let price: Int
