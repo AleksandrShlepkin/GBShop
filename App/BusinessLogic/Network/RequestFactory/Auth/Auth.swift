@@ -12,7 +12,7 @@ class Auth: AbstractRequestFactory {
     let errorParser: AbstractErrorParser
     let sessionManager: Session
     let queue: DispatchQueue
-    let baseUrl = URL(string: "https://raw.githubusercontent.com/GeekBrainsTutorial/online-store-api/master/responses/")!
+    let baseUrl = URL(string: "https://quiet-tor-66324.herokuapp.com/")!
     
     init(
         errorParser: AbstractErrorParser,
@@ -25,8 +25,8 @@ class Auth: AbstractRequestFactory {
 }
 
 extension Auth: AuthRequestFactory {
-    func login(user: User, completionHandler: @escaping (AFDataResponse<LoginResult>) -> Void) {
-        let requestModel = Login(baseUrl: baseUrl, login: user.login ?? "", password: user.password ?? "")
+    func login(user: User, completionHandler: @escaping (AFDataResponse<DefaultResponse>) -> Void) {
+        let requestModel = Login(baseUrl: baseUrl, login: user.username , password: user.password )
         self.request(request: requestModel, completionHandler: completionHandler)
     }
     
@@ -36,8 +36,8 @@ extension Auth: AuthRequestFactory {
 extension Auth {
     struct Login: RequestRouter {
         let baseUrl: URL
-        let method: HTTPMethod = .get
-        let path: String = "login.json"
+        let method: HTTPMethod = .post
+        let path: String = "login"
         
         let login: String
         let password: String

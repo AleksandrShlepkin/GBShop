@@ -13,7 +13,7 @@ class RegisterUser: AbstractRequestFactory {
     var errorParser: AbstractErrorParser
     var sessionManager: Session
     var queue: DispatchQueue
-    let baseURL = URL(string: "https://raw.githubusercontent.com/GeekBrainsTutorial/online-store-api/master/responses/")!
+    let baseURL = URL(string: "https://quiet-tor-66324.herokuapp.com/")!
     
     init(errorParser: AbstractErrorParser,
          sessionManager: Session,
@@ -42,8 +42,8 @@ extension RegisterUser: RegisterUserRequestFactory {
 extension RegisterUser {
     struct  RegisterUser: RequestRouter {
         var baseUrl: URL
-        var method: HTTPMethod = .get
-        var path: String = "registerUser.json"
+        var method: HTTPMethod = .post
+        var path: String = "register"
         
         let result: String
         let userMessage: String
@@ -51,7 +51,7 @@ extension RegisterUser {
         var parameters: Parameters? {
             return [
                 "result": result,
-                "userMessage": userMessage
+                "user_message": userMessage
             ]
         }
         

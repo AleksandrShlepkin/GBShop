@@ -10,20 +10,20 @@ import UIKit
 class ViewController: UIViewController {
     
     let requestFactory = RequestFactory()
-    let user = User(id: 123,
-                login: "alex@gb.com",
-                password: "124414",
-                name: "Alex",
-                lastname: "Short",
-                gender: "male",
-                creditCard: "1314-4533-4554-1123",
-                bio: "I'm student GB",
-                email: "alex@gb.com")
-    
+//    let user21 = User(id: 123,
+//                login: "alex@gb.com",
+//                password: "124414",
+//                name: "Alex",
+//                lastname: "Short",
+//                gender: "male",
+//                creditCard: "1314-4533-4554-1123",
+//                bio: "I'm student GB",
+//                email: "alex@gb.com")
+//
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        getGoodByld()
+        auth()
     }
     
     func getGoodByld() {
@@ -54,6 +54,7 @@ class ViewController: UIViewController {
     
     func auth() {
         let auth = requestFactory.makeAuthRequestFatory()
+        let user = User(username: "Aleksandr", password: "helloWorld")
         auth.login(user: user) { response  in
             switch response.result {
             case .success(let result):
@@ -91,15 +92,12 @@ class ViewController: UIViewController {
     
     func changeUser() {
         let change = requestFactory.makeChangeUserrequestFactory()
-        let user = User(id: 123,
-                        login: "alex@gb.com",
-                        password: "124135",
-                        name: "Alex",
-                        lastname: "Short",
+        let user = User(username: "Aleksandr",
+                        password: "helloWorld",
+                        email: "aleksandr@mail.ru",
                         gender: "male",
-                        creditCard: "3432-4567-2345-9888",
-                        bio: "I student GB",
-                        email: "alex@gb.com")
+                        bio: "what's going on here!?",
+                        creditCard: 214135)
         
         change.chengeUser(user: user) { (response) in
             switch response.result {

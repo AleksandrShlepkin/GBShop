@@ -46,9 +46,8 @@ extension ChangeUser {
         
                 var parameters: Parameters? {
             return [
-                "name": user.name,
-                "user_id": user.id,
-                "username": user.login,
+                
+                "username": user.username,
                 "email": user.email,
                 "gender": user.gender,
                 "credit_card": user.creditCard,
