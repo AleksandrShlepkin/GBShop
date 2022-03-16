@@ -18,7 +18,7 @@ class ViewController: UIViewController {
     
     func getComment() {
         let comments = requestFactory.makeComments()
-        comments.getComments(productID: 123) { (response)  in
+        comments.getComments(productID: 1232) { (response)  in
             switch response.result {
             case .success(let result):
                 print(result)
