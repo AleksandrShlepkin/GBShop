@@ -6,6 +6,7 @@
 //
 
 import Foundation
+<<<<<<< HEAD
 import Alamofire
 
 class Comments: AbstractRequestFactory {
@@ -48,3 +49,5 @@ extension Comments {
 
     }
 }
+=======
+>>>>>>> feature-lesson_4
