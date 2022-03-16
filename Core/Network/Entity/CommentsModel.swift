@@ -6,3 +6,8 @@
 //
 
 import Foundation
+
+
+struct CommentsModel: Codable {
+    var productID: Int
+}

@@ -54,4 +54,8 @@ class RequestFactory {
         return GoodByld(errorParser: errorParser, sessionManager: commonSession, queue: sessionQueue)
     }
    
+    func makeComments() -> CommentsRequsetFactory {
+        let errorParse = makeErrorParser()
+        return Comments(errorParser: errorParse, sessionMenager: commonSession, queue: sessionQueue)
+    }
 }

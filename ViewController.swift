@@ -10,21 +10,25 @@ import UIKit
 class ViewController: UIViewController {
     
     let requestFactory = RequestFactory()
-//    let user21 = User(id: 123,
-//                login: "alex@gb.com",
-//                password: "124414",
-//                name: "Alex",
-//                lastname: "Short",
-//                gender: "male",
-//                creditCard: "1314-4533-4554-1123",
-//                bio: "I'm student GB",
-//                email: "alex@gb.com")
-//
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        auth()
+        
     }
+    
+    func getComment() {
+        let comments = requestFactory.makeComments()
+        comments.getComments(productID: 123) { (response)  in
+            switch response.result {
+            case .success(let result):
+                print(result)
+            case .failure(let error):
+                print(error)
+            }
+        }
+    }
+    
+    
     
     func getGoodByld() {
         let getGoodByld = requestFactory.makeGetGoodByld()

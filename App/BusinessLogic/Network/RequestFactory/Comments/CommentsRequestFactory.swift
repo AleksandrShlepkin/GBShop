@@ -6,3 +6,8 @@
 //
 
 import Foundation
+import Alamofire
+
+protocol CommentsRequsetFactory {
+    func getComments(productID: Int, complitionHandler: @escaping (AFDataResponse<CommentsResponse>) -> Void)
+}
