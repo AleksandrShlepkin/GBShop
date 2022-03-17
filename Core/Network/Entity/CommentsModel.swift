@@ -6,11 +6,8 @@
 //
 
 import Foundation
-<<<<<<< HEAD
-
 
 struct CommentsModel: Codable {
     var productID: Int
 }
-=======
->>>>>>> feature-lesson_4
+

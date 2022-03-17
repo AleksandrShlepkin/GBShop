@@ -6,14 +6,13 @@
 //
 
 import Foundation
-<<<<<<< HEAD
 import Alamofire
 
 class Comments: AbstractRequestFactory {
     var errorParser: AbstractErrorParser
     var sessionManager: Session
     var queue: DispatchQueue
-    let baseURL = URL(string: "https://quiet-tor-66324.herokuapp.com/")!
+    let baseURL = URL(string: "https://salty-chamber-83696.herokuapp.com/")!
     
     init(
         errorParser: AbstractErrorParser,
@@ -26,6 +25,11 @@ class Comments: AbstractRequestFactory {
 }
 
 extension Comments: CommentsRequsetFactory {
+    func deleteComment(productID: Int, complitionHandler: @escaping (AFDataResponse<CommentsResponse>) -> Void) {
+        let requestModel = Delete(baseUrl: baseURL, productID: productID)
+        self.request(request: requestModel, completionHandler: complitionHandler)
+    }
+    
     func getComments(productID: Int, complitionHandler: @escaping (AFDataResponse<CommentsResponse>) -> Void) {
         let requestModel = Comments(baseUrl: baseURL, productID: productID)
         self.request(request: requestModel, completionHandler: complitionHandler)
@@ -37,8 +41,7 @@ extension Comments {
         
         let baseUrl: URL
         let method: HTTPMethod = .post
-        let path: String = "commetns"
-        
+        let path: String = "comments"
         let productID: Int
         
         var parameters: Parameters? {
@@ -46,8 +49,19 @@ extension Comments {
                 "productID": productID
             ]
         }
-
+    }
+    
+    struct Delete: RequestRouter {
+        var baseUrl: URL
+        var method: HTTPMethod = .post
+        var path: String = "deleteComment"
+        var productID: Int
+        
+        var parameters: Parameters? {
+            return [
+                "productID": productID]
+        }
+        
+        
     }
 }
-=======
->>>>>>> feature-lesson_4

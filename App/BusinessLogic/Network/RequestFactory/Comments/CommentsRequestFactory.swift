@@ -6,11 +6,10 @@
 //
 
 import Foundation
-<<<<<<< HEAD
 import Alamofire
 
 protocol CommentsRequsetFactory {
     func getComments(productID: Int, complitionHandler: @escaping (AFDataResponse<CommentsResponse>) -> Void)
+    func deleteComment(productID: Int, complitionHandler: @escaping (AFDataResponse<CommentsResponse>) -> Void)
 }
-=======
->>>>>>> feature-lesson_4
+

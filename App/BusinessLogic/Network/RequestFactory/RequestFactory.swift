@@ -58,4 +58,8 @@ class RequestFactory {
         let errorParse = makeErrorParser()
         return Comments(errorParser: errorParse, sessionMenager: commonSession, queue: sessionQueue)
     }
+    func deleteComments() -> CommentsRequsetFactory {
+        let errorParser = makeErrorParser()
+        return Comments(errorParser: errorParser, sessionMenager: commonSession, queue: sessionQueue)
+    }
 }

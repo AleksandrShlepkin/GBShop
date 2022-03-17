@@ -7,14 +7,27 @@
 
 import Foundation
 
+//struct CommentsResponse: Codable {
+//    var result: Int?
+//    var userID: [Int]?
+//    var comment: [String: String]?
+//    var errorMessage: String?
+//
+//
+//
+//}
+
 struct CommentsResponse: Codable {
-    var result: Int?
-<<<<<<< HEAD
-    var user: [String: String]?
+    var result: Int
+    var userID: Int?
+    var message: String?
+    var comment: [CommentData]?
     var errorMessage: String?
-    
-=======
-    var errorMessage: String?
-    var messege: String?
->>>>>>> feature-lesson_4
+}
+
+struct CommentData: Codable {
+    var comment: String?
+    var name: String?
+    var id: Int?
+
 }

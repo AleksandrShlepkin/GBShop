@@ -13,12 +13,24 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        deleteComent()
+    }
+    
+    func deleteComent() {
+        let delete = requestFactory.deleteComments()
+        delete.deleteComment(productID: 123) { (response) in
+            switch response.result {
+            case .success(let result):
+                print(result)
+            case .failure(let error):
+                print(error)
+            }
+        }
     }
     
     func getComment() {
         let comments = requestFactory.makeComments()
-        comments.getComments(productID: 1232) { (response)  in
+        comments.getComments(productID: 123) { (response)  in
             switch response.result {
             case .success(let result):
                 print(result)
