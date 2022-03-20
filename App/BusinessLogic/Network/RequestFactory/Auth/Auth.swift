@@ -12,7 +12,7 @@ class Auth: AbstractRequestFactory {
     let errorParser: AbstractErrorParser
     let sessionManager: Session
     let queue: DispatchQueue
-    let baseUrl = URL(string: "https://quiet-tor-66324.herokuapp.com/")!
+    let baseUrl = URL(string: "https://salty-chamber-83696.herokuapp.com/")!
     
     init(
         errorParser: AbstractErrorParser,
@@ -26,7 +26,13 @@ class Auth: AbstractRequestFactory {
 
 extension Auth: AuthRequestFactory {
     func login(user: User, completionHandler: @escaping (AFDataResponse<DefaultResponse>) -> Void) {
-        let requestModel = Login(baseUrl: baseUrl, login: user.username , password: user.password )
+        let requestModel = Login(baseUrl: baseUrl,
+                                 username: user.username ?? "",
+                                 password: user.password ?? "",
+                                 email: user.email ?? "",
+                                 gender: user.gender ?? "",
+                                 creditCard: user.creditCard ?? 123,
+                                 bio: user.bio ?? "")
         self.request(request: requestModel, completionHandler: completionHandler)
     }
     
@@ -37,14 +43,24 @@ extension Auth {
     struct Login: RequestRouter {
         let baseUrl: URL
         let method: HTTPMethod = .post
-        let path: String = "login"
+        let path: String = "register"
         
-        let login: String
-        let password: String
+        var username: String
+        var password: String
+        var email: String
+        var gender: String
+        var creditCard: Int
+        var bio: String
+        
+        
         var parameters: Parameters? {
             return [
-                "username": login,
-                "password": password
+                "username": username,
+                "password": password,
+                "email": email,
+                "gender": gender,
+                "creditCard": creditCard,
+                "bio": bio
             ]
         }
     }

@@ -13,7 +13,7 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        deleteComent()
+        auth()
     }
     
     func deleteComent() {
@@ -70,7 +70,12 @@ class ViewController: UIViewController {
     
     func auth() {
         let auth = requestFactory.makeAuthRequestFatory()
-        let user = User(username: "Aleksandr", password: "helloWorld")
+        let user = User(username: "Aleksandr",
+                        password: "helloworld",
+                        email: "alex@icloud.com",
+                        gender: "male"
+                        , bio: "Hi",
+                        creditCard: 14235346)
         auth.login(user: user) { response  in
             switch response.result {
             case .success(let result):

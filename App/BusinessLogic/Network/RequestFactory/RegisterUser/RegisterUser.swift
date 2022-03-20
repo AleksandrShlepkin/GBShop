@@ -13,7 +13,7 @@ class RegisterUser: AbstractRequestFactory {
     var errorParser: AbstractErrorParser
     var sessionManager: Session
     var queue: DispatchQueue
-    let baseURL = URL(string: "https://quiet-tor-66324.herokuapp.com/")!
+    let baseURL = URL(string: "https://salty-chamber-83696.herokuapp.com/")!
     
     init(errorParser: AbstractErrorParser,
          sessionManager: Session,
