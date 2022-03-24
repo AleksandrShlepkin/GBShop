@@ -62,4 +62,9 @@ class RequestFactory {
         let errorParser = makeErrorParser()
         return Comments(errorParser: errorParser, sessionMenager: commonSession, queue: sessionQueue)
     }
+    
+    func getShoppingCart() -> ShoppingCartRequestFactory {
+        let errorParser = makeErrorParser()
+        return ShoppingCart(errorParser: errorParser, sessionManager: commonSession, queue: sessionQueue)
+    }
 }

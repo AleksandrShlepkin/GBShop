@@ -13,7 +13,8 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        auth()
+        getCart()
+        
     }
     
     func deleteComent() {
@@ -128,6 +129,38 @@ class ViewController: UIViewController {
                 print(error)
             }
         }
+    }
+    
+    func getCart() {
+        let getCart = requestFactory.getShoppingCart()
+        let product1 = ProductModel(result: 1,
+                                    productID: 123,
+                                    productName: "Asus",
+                                    productPrice: 34500,
+                                    productDescription: "Gaming notebook")
+        let product2 = ProductModel(result: 1,
+                                    productID: 445,
+                                    productName: "Apple",
+                                    productPrice: 98000,
+                                    productDescription: "Devolopment notebook")
+        UserShoppingCart.share.addProduct(product1)
+        UserShoppingCart.share.addProduct(product2)
+        
+        let products = UserShoppingCart.share.products
+        print(products)
+        
+        if !products.isEmpty {
+            getCart.getShoppingCart(userID: 123) { response  in
+                switch response.result {
+                case .success(let result):
+                    print(result)
+                case .failure(let error):
+                    print(error)
+                }
+            }
+        }
+       print("Товаров в корзине на \(UserShoppingCart.share.sum) тысяч рублей")
+        UserShoppingCart.share.clearCart()
     }
     
     
