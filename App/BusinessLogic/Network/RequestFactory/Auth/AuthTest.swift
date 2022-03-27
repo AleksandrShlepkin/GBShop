@@ -8,7 +8,8 @@
 import Foundation
 import Alamofire
 
-class Auth: AbstractRequestFactory {
+
+class AuthTest: AbstractRequestFactory {
     let errorParser: AbstractErrorParser
     let sessionManager: Session
     let queue: DispatchQueue
@@ -24,7 +25,7 @@ class Auth: AbstractRequestFactory {
     }
 }
 
-extension Auth: AuthRequestFactory {
+extension AuthTest: AuthRequestFactory {
     func login(user: User, completionHandler: @escaping (AFDataResponse<DefaultResponse>) -> Void) {
         let requestModel = Login(baseUrl: baseUrl,
                                  username: user.username ?? "",
@@ -39,7 +40,7 @@ extension Auth: AuthRequestFactory {
     
 }
 
-extension Auth {
+extension AuthTest {
     struct Login: RequestRouter {
         let baseUrl: URL
         let method: HTTPMethod = .post
