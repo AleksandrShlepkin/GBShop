@@ -9,7 +9,8 @@ import Foundation
 import UIKit
 import Firebase
 import FirebaseAuth
-import Alamofire
+import FirebaseCore
+
 
 class RegisterViewController: UIViewController {
     
@@ -25,7 +26,7 @@ class RegisterViewController: UIViewController {
     @IBAction func registerButton(_ sender: UIButton) {
         register()
     }
-    
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -60,9 +61,10 @@ class RegisterViewController: UIViewController {
         }
         Auth.auth().createUser(withEmail: email, password: password) { authResult, error in
             if  error != nil {
-                self.showAlert(title: "Error", text: "Error")
+                self.showAlert(title: "Ошибка", text: "Регистрация не получилась")
             } else {
-                self.performSegue(withIdentifier: "HomeView", sender: nil)
+                self.showAlert(title: "Поздравляю!", text: "Регистрация прошла успешно")
+//                self.performSegue(withIdentifier: "HomeView", sender: nil)
             }
         }
         

@@ -52,7 +52,8 @@ class LoginViewController: UIViewController {
             if error != nil {
                 self.showAlert(title: "Ошибка", text: "Не верный логин или пароль")
             } else {
-                self.performSegue(withIdentifier: "GoHome", sender: nil)
+//                self.performSegue(withIdentifier: "GoHome", sender: nil)
+                self.showAlert(title: "Добро пожаловать", text: "")
             }
         }
     }
