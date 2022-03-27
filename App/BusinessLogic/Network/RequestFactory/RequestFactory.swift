@@ -26,7 +26,7 @@ class RequestFactory {
     
     func makeAuthRequestFatory() -> AuthRequestFactory {
         let errorParser = makeErrorParser()
-        return Auth(errorParser: errorParser, sessionManager: commonSession, queue: sessionQueue)
+        return AuthTest(errorParser: errorParser, sessionManager: commonSession, queue: sessionQueue)
     }
     
     func makeLogOutRequestFactory() -> LogOutRequestFactory {
@@ -66,5 +66,15 @@ class RequestFactory {
     func getShoppingCart() -> ShoppingCartRequestFactory {
         let errorParser = makeErrorParser()
         return ShoppingCart(errorParser: errorParser, sessionManager: commonSession, queue: sessionQueue)
+    }
+    
+    func registration() -> RegistrationRequestFactory {
+        let error = makeErrorParser()
+        return Registration(errorParser: error, sessionManager: commonSession, queue: sessionQueue)
+    }
+    
+    func singUp() -> RegistrationRequestFactory {
+        let error = makeErrorParser()
+        return Registration(errorParser: error, sessionManager: commonSession, queue: sessionQueue)
     }
 }

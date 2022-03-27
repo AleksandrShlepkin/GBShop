@@ -14,9 +14,11 @@ class PreviewViewController: UIViewController {
     
     @IBOutlet weak var registerButtonStyle: UIButton!
     @IBAction func goLogInButton(_ sender: UIButton) {
+        goLogin()
     }
     
     @IBAction func goRegisterButton(_ sender: UIButton) {
+        goRegister()
     }
     
     
@@ -28,6 +30,18 @@ class PreviewViewController: UIViewController {
     }
     
     
+    
+    func goLogin() {
+        guard let vc = storyboard?.instantiateViewController(withIdentifier: "LoginViewController") else { return }
+        guard let window = self.view.window else { return }
+        window.rootViewController = vc
+    }
+    
+    func goRegister() {
+        guard let vc = storyboard?.instantiateViewController(withIdentifier: "RegisterViewController") else { return }
+        guard let window = self.view.window else { return }
+        window.rootViewController = vc
+    }
     
     func setUpButtons() {
         Utilities.styleFielledButton(LogInButtonStyle)

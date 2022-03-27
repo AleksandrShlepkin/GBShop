@@ -6,3 +6,12 @@
 //
 
 import Foundation
+
+
+struct RegistrationResponse: Codable {
+    
+    var result: Int
+    var id: UUID?
+    var message: String?
+    
+}

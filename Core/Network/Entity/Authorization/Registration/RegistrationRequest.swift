@@ -6,3 +6,13 @@
 //
 
 import Foundation
+
+
+struct RegistrationRequest: Codable {
+    
+    var name: String
+    var email: String
+    var password: String
+    var validPassword: String?
+    
+}
