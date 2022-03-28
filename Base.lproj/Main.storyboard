@@ -98,7 +98,6 @@
                                 <buttonConfiguration key="configuration" style="filled" title="Войти"/>
                                 <connections>
                                     <action selector="SingUpButton:" destination="oa2-lp-lD7" eventType="touchUpInside" id="Q6N-YZ-Tj0"/>
-                                    <segue destination="zvg-9p-dBJ" kind="show" identifier="GoHome" id="20a-X0-yf7"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iZN-Ei-TWQ">
@@ -128,6 +127,7 @@
                     <connections>
                         <outlet property="emailTextField" destination="Ta0-xq-AQl" id="J4B-gu-5ES"/>
                         <outlet property="passwordTextField" destination="ag2-rK-LAu" id="Y1K-yk-rxh"/>
+                        <segue destination="zvg-9p-dBJ" kind="show" identifier="GoHome" id="dhv-nL-uOp"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="05k-eQ-gP8" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -184,7 +184,6 @@
                                 <buttonConfiguration key="configuration" style="filled" title="Зарегистрироваться"/>
                                 <connections>
                                     <action selector="registerButton:" destination="Yfi-le-jGL" eventType="touchUpInside" id="DXj-0f-43h"/>
-                                    <segue destination="zvg-9p-dBJ" kind="show" identifier="HomeView" id="o8x-sY-h0r"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -214,6 +213,7 @@
                         <outlet property="nameTextField" destination="SEc-8r-AQY" id="a3a-2K-XX0"/>
                         <outlet property="passwordTextField" destination="W0d-Tz-73l" id="160-Yn-NGi"/>
                         <outlet property="validPasswordTextField" destination="Yz2-iz-b6E" id="1d4-P7-NFh"/>
+                        <segue destination="zvg-9p-dBJ" kind="show" identifier="HomeView" id="IXO-qI-4L8"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="RMe-3l-aWX" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -292,7 +292,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="20a-X0-yf7"/>
+        <segue reference="dhv-nL-uOp"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="image_pc" width="1024" height="1024"/>

@@ -9,6 +9,7 @@ import Foundation
 import UIKit
 import Firebase
 import FirebaseAuth
+import FirebaseFirestore
 
 
 class RegisterViewController: UIViewController {
@@ -26,14 +27,10 @@ class RegisterViewController: UIViewController {
         register()
     }
 
-    
     override func viewDidLoad() {
         super.viewDidLoad()
 
     }
-    
-
-    
     
     func register() {
         guard let name = nameTextField.text, nameTextField.hasText,
@@ -59,17 +56,19 @@ class RegisterViewController: UIViewController {
             if  error != nil {
                 self.showAlert(title: "Ошибка", text: "Регистрация не получилась")
             } else {
-                self.showAlert(title: "Поздравляю!", text: "Регистрация прошла успешно")
-//                self.performSegue(withIdentifier: "HomeView", sender: nil)
+                let db = Firestore.firestore()
+                db.collection("users").addDocument(data: ["name": name,
+                                                          "email": email,
+                                                          "password": password,
+                                                          "uid": authResult!.user.uid]) { err  in
+                    if err != nil {
+                        self.showAlert(title: "Error", text: "Error")
+                    }
+                }
+//                self.showAlert(title: "Поздравляю!", text: "Регистрация прошла успешно")
+                self.performSegue(withIdentifier: "HomeView", sender: nil)
             }
         }
-        
-    }
-    
-    func goHome() {
-        guard let vc = self.storyboard?.instantiateViewController(withIdentifier: "HomeView") else { return }
-        self.navigationController?.pushViewController(vc, animated: true)
-        
     }
     
     func showAlert(title: String?, text: String?) {
@@ -78,6 +77,4 @@ class RegisterViewController: UIViewController {
         alert.addAction(okControl)
         self.present(alert, animated: true, completion: nil)
     }
-    
-    
 }
