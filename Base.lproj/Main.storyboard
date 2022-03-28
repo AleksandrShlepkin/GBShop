@@ -137,7 +137,7 @@
         <!--Home View Controller-->
         <scene sceneID="Fei-49-LC4">
             <objects>
-                <viewController storyboardIdentifier="HomeView" id="cp3-yj-8L2" customClass="HomeViewController" customModule="GBShop" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="HomeView" modalPresentationStyle="fullScreen" id="cp3-yj-8L2" customClass="HomeViewController" customModule="GBShop" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="2BR-4n-iDM">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -274,7 +274,7 @@
         <!--Navigation Controller-->
         <scene sceneID="S4X-0E-uUI">
             <objects>
-                <navigationController wantsFullScreenLayout="YES" automaticallyAdjustsScrollViewInsets="NO" navigationBarHidden="YES" id="zvg-9p-dBJ" sceneMemberID="viewController">
+                <navigationController wantsFullScreenLayout="YES" automaticallyAdjustsScrollViewInsets="NO" modalPresentationStyle="fullScreen" navigationBarHidden="YES" id="zvg-9p-dBJ" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationItem key="navigationItem" id="7CP-vE-0uq"/>
                     <nil key="simulatedTopBarMetrics"/>

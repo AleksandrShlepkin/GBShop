@@ -27,10 +27,6 @@ class LoginViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        FirebaseApp.configure()
-        token = Auth.auth().addIDTokenDidChangeListener { [weak self] auth, user in
-            guard user != nil else { return }
-        }
     }
     
     func singUp() {

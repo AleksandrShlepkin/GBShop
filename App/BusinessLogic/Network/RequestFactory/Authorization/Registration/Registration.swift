@@ -26,11 +26,9 @@ class Registration: AbstractRequestFactory {
 
 extension Registration: RegistrationRequestFactory {
     func singUp(email: String, password: String, complitionHandler: @escaping (AFDataResponse<RegistrationResponse>) -> Void) {
-        let requestModel = Register(baseUrl: baseURL,
-                                    name: nil,
-                                    email: email,
-                                    password: password,
-                                    validPassword: nil)
+        let requestModel = Auth(baseUrl: baseURL,
+                                email: email,
+                                password: password)
         self.request(request: requestModel, completionHandler: complitionHandler)
     }
     
@@ -66,5 +64,21 @@ extension Registration {
                 "validPassword": validPassword ?? ""
             ]
         }
+    }
+    
+    struct Auth: RequestRouter {
+        var baseUrl: URL
+        var method: HTTPMethod = .post
+        var path: String = "auth"
+        
+        var email: String
+        var password: String
+        var parameters: Parameters? {
+            return [
+                "email": email,
+                "password": password]
+        }
+        
+        
     }
 }
