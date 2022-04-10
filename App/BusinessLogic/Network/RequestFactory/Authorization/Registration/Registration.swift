@@ -12,7 +12,7 @@ class Registration: AbstractRequestFactory {
     var errorParser: AbstractErrorParser
     var sessionManager: Session
     var queue: DispatchQueue
-    let baseURL = URL(string: "http://127.0.0.1:8080/")!
+    let baseURL = URL(string: "hhttps://salty-chamber-83696.herokuapp.com/")!
     
     init(errorParser: AbstractErrorParser,
          sessionManager: Session,
@@ -21,7 +21,6 @@ class Registration: AbstractRequestFactory {
         self.sessionManager = sessionManager
         self.queue = queue
     }
-    
 }
 
 extension Registration: RegistrationRequestFactory {

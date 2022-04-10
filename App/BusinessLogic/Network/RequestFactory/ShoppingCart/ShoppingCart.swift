@@ -41,7 +41,7 @@ extension ShoppingCart {
         let encoding: RequestRouterEncoding = .json
         
         let userID: Int
-        let productID = UserShoppingCart.share.products.map({$0.productID})
+        let productID = UserShoppingCart.share.products.map({$0.id})
         
         var parameters: Parameters? {
             return [

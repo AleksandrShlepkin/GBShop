@@ -32,3 +32,39 @@ class Utilities {
         return passwordText.evaluate(with: password)
     }
 }
+
+extension Data {
+    var prettyJSON: NSString? {
+        guard let object = try? JSONSerialization.jsonObject(with: self, options: []),
+              let data = try? JSONSerialization.data(withJSONObject: object, options: [.prettyPrinted]),
+              let prettyPrintedString = NSString(data: data, encoding: String.Encoding.utf8.rawValue) else {
+            return nil
+        }
+        return prettyPrintedString
+    }
+}
+
+enum Result<T> {
+    case done(T)
+    case fail(String)
+    
+    func map<P>(f: (T) -> P) -> Result<P> {
+        switch self {
+        case .done(let value):
+            return .done(f(value))
+        case .fail(let error):
+            return .fail(error)
+        }
+    }
+    
+    var description : String {
+        get {
+            switch self {
+            case .done(let value):
+                return "\(value)"
+            case .fail(let message):
+                return "\(message)"
+            }
+        }
+    }
+}

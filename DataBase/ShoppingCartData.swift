@@ -35,7 +35,7 @@ final class ShoppingCartData {
     }
     
     func getSum(product: [ProductModel]) -> Int {
-        return product.map({$0.productPrice}).reduce(0, +)
+        return product.map({$0.price}).reduce(0, +)
     }
     
     

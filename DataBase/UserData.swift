@@ -28,12 +28,12 @@ class UserShoppingCart {
     
     func addProduct(_ product: ProductModel) {
         self.products.append(product)
-        self.sum += product.productPrice
+        self.sum += product.price
     }
     
     func deleteProduct(_ product: ProductModel) {
-        self.products.remove(at: product.productID)
-        self.sum -= product.productPrice
+        self.products.remove(at: product.id)
+        self.sum -= product.price
     }
     
     func clearCart() {
