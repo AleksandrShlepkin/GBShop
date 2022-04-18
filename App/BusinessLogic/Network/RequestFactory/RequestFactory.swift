@@ -48,4 +48,14 @@ class RequestFactory {
         let error = makeErrorParser()
         return Category(errorParser: error, sessionManager: commonSession, queue: sessionQueue)
     }
+    
+    func getComments() -> CommentsRequestFactory {
+        let error = makeErrorParser()
+        return Comments(errorParser: error, sessionManager: commonSession, queue: sessionQueue)
+    }
+    
+    func deleteComment() -> CommentsRequestFactory {
+        let error = makeErrorParser()
+        return Comments(errorParser: error, sessionManager: commonSession, queue: sessionQueue)
+    }
 }

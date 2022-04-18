@@ -8,7 +8,7 @@
 import Foundation
 
 
-struct ProductViewModel {
+struct CatalogViewModel {
     
     private(set) var name: String
     private(set) var id: Int
@@ -29,3 +29,5 @@ struct ProductViewModel {
         self.url = good.url ?? ""
     }
 }
+
+

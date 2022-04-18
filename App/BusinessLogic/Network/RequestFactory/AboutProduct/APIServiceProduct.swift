@@ -12,7 +12,8 @@ import Alamofire
 final class APIServiceProduct {
     
     private let request = RequestFactory()
-    private(set) var product: Result<[ProductViewModel]>?
+    private(set) var product: Result<[CatalogViewModel]>?
+   
     
     func getCatalog(categoryId: Int, pageNumber: Int, complition: @escaping () -> Void) {
         let catalog = request.getCategory()
@@ -23,7 +24,7 @@ final class APIServiceProduct {
             case .success(let result):
                 if result.result == 1,
                    let catalog = result.goods {
-                    self.product = .done(catalog.compactMap { ProductViewModel(good: $0)})
+                    self.product = .done(catalog.compactMap { CatalogViewModel(good: $0)})
                 } else {
                     self.product = .fail("Error in APIService")
                 }
@@ -37,5 +38,7 @@ final class APIServiceProduct {
             }
         }
     }
+    
+
     
 }

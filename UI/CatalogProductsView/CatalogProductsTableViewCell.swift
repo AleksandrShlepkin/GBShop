@@ -25,7 +25,7 @@ class CatalogProductsTableViewCell: UITableViewCell {
 
     }
     
-    func config(for goods: ProductViewModel) {
+    func config(for goods: CatalogViewModel) {
         self.nameLabel.text = goods.name
         self.priceLabel.text = "\(goods.price)тыс. рублей"
         self.shortDescriptionLabel.text = goods.shortDescription

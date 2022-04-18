@@ -8,7 +8,6 @@
 import Foundation
 import UIKit
 
-
 class CatalogProductsViewController: UIViewController {
     
     let apiService = APIServiceProduct()
@@ -29,9 +28,7 @@ class CatalogProductsViewController: UIViewController {
         homeTableView.register(UINib(nibName: "CatalogProductsTableViewCell", bundle: nil), forCellReuseIdentifier: "CatalogProductsTableViewCell")
         
         catalog = APIServiceProduct()
-        
     }
-    
 }
 
 extension CatalogProductsViewController: UITableViewDelegate, UITableViewDataSource {
@@ -62,4 +59,19 @@ extension CatalogProductsViewController: UITableViewDelegate, UITableViewDataSou
         return cell
     }
     
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let vc = storyboard?.instantiateViewController(withIdentifier: "ProductViewController") as! ProductViewController
+        let goods = catalog?.product
+        switch goods {
+        case .done(let catalog):
+            vc.goods = [catalog[indexPath.row]]
+            print(catalog)
+        case .fail:
+            print("Error in cellForRowAt")
+        case .none:
+            break
+        }
+        
+        navigationController?.pushViewController(vc, animated: true)
+    }
 }
